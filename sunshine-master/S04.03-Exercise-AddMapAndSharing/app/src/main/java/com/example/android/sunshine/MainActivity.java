@@ -222,7 +222,17 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
         }
 
         // TODO (2) Launch the map when the map menu item is clicked
-
+        if (id == R.id.action_open_map) {
+            openMap();
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void openMap() {
+        Uri gmmIntentUri = Uri.parse("geo:0,0");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        }
     }
 }
